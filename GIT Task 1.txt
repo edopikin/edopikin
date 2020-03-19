@@ -1,0 +1,5 @@
+Name: Ukpebor, Egheosa Osahon
+Email address: ukpeborosahon@yahoo.com
+Slack username: edopikin
+Track: Backend, Design
+Courses: Python, Go
