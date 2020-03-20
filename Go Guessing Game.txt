@@ -1,0 +1,56 @@
+package main
+
+import (
+	"fmt"
+	"math/rand"
+	"strings"
+	"time"
+)
+
+func main() {
+	var secretNumber int = generateRandomNumber()
+	confirmAnswer(secretNumber)
+}
+
+func generateRandomNumber() int {
+	// generate a random number
+	source := rand.NewSource(time.Now().UnixNano())
+	randomizer := rand.New(source)
+	randomNumber := randomizer.Intn(10)
+	return randomNumber
+}
+
+func confirmAnswer(correctNumber int) {
+
+	fmt.Println("Guess the number!")
+	var guess int
+
+	for {
+		fmt.Println("Please input your guess")
+		fmt.Scan(&guess)
+
+		if guess > correctNumber {
+			fmt.Println("Too Big!")
+		} else if guess < correctNumber {
+			fmt.Println("Too Small!")
+		} else {
+			fmt.Println("Are You Sure; Yes or No")
+
+			var response string
+			fmt.Scan(&response) //NO nO No
+
+			response = strings.ToLower(response)
+
+			if response == "yes" {
+				fmt.Println("You're Correct!, You Win!")
+				break
+			} else if response == "no" {
+				fmt.Println("You're Wrong")
+				var secretNumber int = generateRandomNumber()
+				confirmAnswer(secretNumber)
+				break
+
+			}
+		}
+	}
+}
